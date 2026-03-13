@@ -37,10 +37,10 @@ export default function App() {
         </View>
 
         <Button
-          title="Fazer login"
+          title="Fazer cadastro"
           color="orange"
           onPress={() =>
-            Alert.alert('Mensagem', 'Login feito com sucesso')
+            Alert.alert('Mensagem', 'Cadastro feito com sucesso')
           }
         />
       </View>
