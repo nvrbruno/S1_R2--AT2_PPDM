@@ -1,67 +1,80 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Image, Pressable, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Button, Alert, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
   return (
-    <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
-      <ScrollView style={{ flex: 1, width: '100%', height: '100%' }}>
-        <View style={styles.container}>
-          <StatusBar style="auto" />
+    <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
-          <Text>View dentro da view principal</Text>
+      <View style={styles.container}>
+        <StatusBar style="auto" />
 
-          <View style={{ width: '97%', height: 50, backgroundColor: 'gray' }} />
+        <View style={styles.card}>
 
-          <Image
-            source={{ uri: 'https://picsum.photos/id/237/200/300' }}
-            style={{ width: '100%', height: 200 }}
-            resizeMode="center"
+        <Text style={styles.titulo}>CADASTRO</Text>
+
+          <TextInput
+            placeholder="Digite seu nome"
+            style={styles.input}
           />
 
-          <Pressable
-            style={({ pressed }) => [
-              { backgroundColor: pressed ? 'red' : 'green' },
-              styles.Button
-            ]}
-          >
-            <Text>Pressione para mudar de cor</Text>
-          </Pressable>
+          <TextInput
+            placeholder="Digite seu e-mail"
+            style={styles.input}
+            keyboardType="email-address"
+          />
 
-          <Button title='Alert' color='orange' onPress={() =>
-            Alert.alert('Mensagem', 'Esta é a mensagem do alert', [
-              {
-                text: 'OK', 
-                onPress: () => console.log('Botão OK pressionado')
-              },
-              {
-                text: 'Cancelar',
-                onPress: () => console.log('Botão cancelar pressionado')
-              },
-            ])
-          }></Button>
+          <TextInput
+            placeholder="Digite seu telefone"
+            style={styles.input}
+            keyboardType="phone-pad"
+          />
 
+          <TextInput
+            placeholder="Digite data de nascimento"
+            style={styles.input}
+          />
         </View>
-      </ScrollView>
+
+        <Button
+          title="Fazer login"
+          color="orange"
+          onPress={() =>
+            Alert.alert('Mensagem', 'Login feito com sucesso')
+          }
+        />
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    width: '100%',
     alignItems: 'center',
-    // justifyContent: 'center',
   },
-  Button: {
-    marginTop: 5,
+
+  titulo: {
+    marginBottom: 10,
+    textAlign:'center'
+  },
+
+  card: {
+    width: '95%',
+    alignSelf: 'center',
+    backgroundColor: '#d3d3d3',
+    padding: 5,
+    borderRadius: 5,
+    shadowOpacity: 0.5,
+    marginBottom: 20
+  },
+
+  input: {
+    width: '95%',
+    alignSelf: 'center',
+    borderWidth: 1,
     borderRadius: 5,
     padding: 5,
-    width: '97%',
-    height: 45,
-    justifyContent: 'center',
-    alignItems: 'center',
-    elevation: 5
-  },
+    marginBottom: 5
+  }
 });
